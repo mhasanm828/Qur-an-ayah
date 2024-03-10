@@ -3,28 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quran Surah Player</title>
+  <title id="title">Quran Surah Player</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom styles -->
   <style>
+    /* Common styles for both light and dark mode */
+    html, body {
+      height: 100%;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
     .container {
       max-width: 800px;
-      margin: auto;
       padding-top: 50px;
-    }
-    body{
-      text-align: center;
     }
     .progress {
       height: 15px;
       border: 1px solid darkred;
     }
+    /* Footer styles */
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: purple;
+      padding: 10px 0;
+      text-align: center;
+    }
+    /* Dark mode specific styles */
+    .dark-mode {
+      background-color: #222;
+      color: #fff;
+    }
+    .DarMode{
+      background:gray;
+      border-radius: 40px;
+
+      padding:20px;
+      width:25%;
+      height:60px;
+      text-align:center;
+    }
   </style>
+  
 </head>
 <body>
-  <div class="container">
-    <h1 class="text-center">Quran Surah Player</h1>
+  
+  <div class="container"> 
+    <div class="  form-switch DarMode ">
+      <input class="form-check-input " type="checkbox" id="darkModeSwitch" onclick="toggleDarkMode()">
+      <label class="form-check-label " for="darkModeSwitch"> <b>Dark Mode</b> </label>
+    </div>
+   
+    <h1>Quran Surah Player</h1>
     <select class="form-select mb-3" id="surahSelect">
       <option selected disabled>Select Surah</option>
       <!-- Surah options will be dynamically added here -->
@@ -36,10 +73,8 @@
       <div class="progress-bar" role="progressbar" style="width: 0%;" id="progressBar"></div>
     </div>
     <div class="mt-2" id="timer">00:00 / 00:00</div>
+    
   </div>
-  <br><br>
-  <h1> © Md Hasan Mahmud </h1>
-
 
   <!-- Bootstrap JS bundle (popper.js included) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -55,9 +90,9 @@
       progressBar = document.getElementById('progressBar');
       timerElement = document.getElementById('timer');
 
-// Surah names array
-var surahNames = [
-        "আল ফাতিহা (সূচনা)",
+      // Surah names array
+      var surahNames = [
+            "আল ফাতিহা (সূচনা)",
         "আল বাকারা (বকনা-বাছুর-গরু)",
         "আল ইমরান (ইমরানের পরিবার)",
         "আন নিসা (মহিলা)",
@@ -172,16 +207,13 @@ var surahNames = [
       "আল-ফালাক (নিশিভোর)",
       "আন-নাস (মানবজাতি)"
     
-,]
 
+      ];
 
-
-        // Add more surah names as needed
-      
       // Function to fetch and display surahs in dropdown
       function fetchSurahs() {
         for (let i = 1; i <= 114; i++) {
-          const surahNumber = i;
+          const surahNumber = i.toString().padStart(3, '0');
           const option = document.createElement('option');
           option.value = surahNumber;
           option.textContent = `Surah ${surahNumber}: ${surahNames[i - 1]}`;
@@ -193,15 +225,15 @@ var surahNames = [
       window.playSurah = function () {
         const surahNumber = surahSelect.value;
         if (surahNumber) {
-          const surahUrl = `http://27.131.15.12:801/contents/surah/ms/${surahNumber}.mp3`;
+          const surahUrl = `https://download.quranicaudio.com/quran/abdurrahmaan_as-sudays/${surahNumber}.mp3`;
           if (audioElement) {
             audioElement.pause();
           }
           audioElement = new Audio(surahUrl);
           audioElement.play();
           audioElement.addEventListener('timeupdate', updateProgressBar);
-          isPaused = false; // Reset pause state when play button is clicked
-          updateTimer(); // Update timer when playback starts
+          isPaused = false;
+          updateTimer();
         }
       }
 
@@ -214,7 +246,7 @@ var surahNames = [
           } else {
             audioElement.play();
             isPaused = false;
-            updateTimer(); // Update timer when playback resumes
+            updateTimer();
           }
         }
       }
@@ -225,8 +257,8 @@ var surahNames = [
           audioElement.pause();
           audioElement.currentTime = 0;
           progressBar.style.width = '0%';
-          isPaused = false; // Reset pause state when stopping the surah
-          updateTimer(); // Reset timer when playback stops
+          isPaused = false;
+          updateTimer();
         }
       }
 
@@ -235,7 +267,7 @@ var surahNames = [
         if (audioElement) {
           const progress = (audioElement.currentTime / audioElement.duration) * 100;
           progressBar.style.width = progress + '%';
-          updateTimer(); // Update timer as playback progresses
+          updateTimer();
         }
       }
 
@@ -261,6 +293,26 @@ var surahNames = [
       // Fetch and display surahs in dropdown when the page loads
       fetchSurahs();
     });
+
+    // Function to toggle dark mode
+    function toggleDarkMode() {
+      const body = document.body;
+      body.classList.toggle('dark-mode');
+    }
   </script>
+
+  <!-- Dynamic title update -->
+  <script>
+    // Update the title with the selected Surah
+    document.getElementById('surahSelect').addEventListener('change', function () {
+      const selectedSurah = document.getElementById('surahSelect').value;
+      document.getElementById('title').textContent = `Surah ${selectedSurah}: ${surahNames[selectedSurah - 1]}`;
+    });
+  </script>
+
+  <!-- Footer -->
+  <footer>
+    <h5>&copy; Md Hasan Mahmud</h5>
+  </footer>
 </body>
 </html>
