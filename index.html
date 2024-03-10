@@ -30,7 +30,7 @@
       margin-bottom: 30px;
       color: yellow;
       text-shadow: 0px 0px 2px green;
-      border: 2px solid plum;
+
       
     }
     #quranForm input[type="number"] {
@@ -49,6 +49,13 @@
 <body>
 
   <div class="container-fluid">
+    
+     <div class="  form-switch DarMode ">
+      <input class="form-check-input " type="checkbox" id="darkModeSwitch" onclick="toggleDarkMode()">
+      <label class="form-check-label " for="darkModeSwitch"> <b>Dark Mode</b> </label>
+    </div>
+   <br> <br>
+    
     <div class="container mt-5">
       <div class="row">
         <div class="col-md-6 offset-md-3">
@@ -91,6 +98,11 @@
       const audioPlayerContainer = document.getElementById('audioPlayer');
       audioPlayerContainer.classList.remove('d-none');
     });
+        // Function to toggle dark mode
+    function toggleDarkMode() {
+      const body = document.body;
+      body.classList.toggle('dark-mode');
+    }
   </script>
 
 </body>
