@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Names and Attributes of Allah</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Hind Siliguri', sans-serif; /* Use Hind Siliguri font */
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .container {
+      max-width: 100%;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #5A997B;
+      text-align: center;
+    }
+    .name-card {
+      border: 1px solid #5A997B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 10px;
+    }
+    .number {
+      font-size: 18px;
+      color: #666;
+      text-align: center;
+    }
+    .name {
+      font-size: 20px;
+      font-weight: bold;
+      color: #42BBA3 ;
+      text-align: center;
+    }
+    .meaning {
+      color: #6A6763;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2> আল্লাহর ৯৯ নাম বাংলা অর্থ সহ </h2>
+    <div id="names-container"></div>
+  </div> 
+
+  <script>
+    // Your JSON data here
+    const data = [
+    {
+    "name": "আর রাহমান",
+    "meaning": "পরম দয়ালু"
+  },
+  {
+    "name": "আর রহিম",
+    "meaning": "অতিশয় মেহেরবান"
+  },
+  {
+    "name": "আল মালিক",
+    "meaning": "সর্বকর্তৃত্বময়"
+  },
+  {
+    "name": "আল কুদ্দুস",
+    "meaning": "অতি পবিত্র"
+  },
+  {
+    "name": "আস সালাম",
+    "meaning": "শান্তি দানকারী"
+  },
+  {
+    "name": "আল মুমিন",
+    "meaning": "নিরাপত্তা ও ঈমান দানকারী"
+  },
+  {
+    "name": "আল মুহাইমিন",
+    "meaning": "পরিপূর্ণ রক্ষণাবেক্ষণকারী"
+  },
+  {
+    "name": "আল আজিজ",
+    "meaning": "পরাক্রমশালী"
+  },
+  {
+    "name": "আল জাব্বার",
+    "meaning": "দুর্নিবার"
+  },
+  {
+    "name": "আল মুতাকাব্বির",
+    "meaning": "নিরঙ্কুশ শ্রেষ্ঠত্বের অধিকারী"
+  },
+  {
+    "name": "আল খালিক",
+    "meaning": "সৃষ্টিকর্তা"
+  },
+  {
+    "name": "আল বারী",
+    "meaning": "সঠিকভাবে সৃষ্টিকারী"
+  },
+  {
+    "name": "আল মুসাউইর",
+    "meaning": "আকৃতি দানকারী"
+  },
+  {
+    "name": "আল গাফ্ফার",
+    "meaning": "পরম ক্ষমাশীল"
+  },
+  {
+    "name": "আল ক্বাহার",
+    "meaning": "কঠোর"
+  },
+  {
+    "name": "আল ওয়াহ্বাহ",
+    "meaning": "সবকিছু দানকারী"
+  },
+  {
+    "name": "আর রাজ্জাক",
+    "meaning": "রিযিকদাতা"
+  },
+  {
+    "name": "আল ফাত্তাহ",
+    "meaning": "বিজয়দানকারী"
+  },
+  {
+    "name": "আল আলীম",
+    "meaning": "সর্বজ্ঞ"
+  },
+  {
+    "name": "আল কাবিদ",
+    "meaning": "সংকীর্ণকারী"
+  },
+  {
+    "name": "আল বাসিত",
+    "meaning": "প্রশস্তকারী"
+  },
+  {
+    "name": "আল খাফিদ",
+    "meaning": "অবনতকারী"
+  },
+  {
+    "name": "আর রাফী",
+    "meaning": "উন্নতকারী"
+  },
+  {
+    "name": "আল মুজিব",
+    "meaning": "সম্মান দানকারী"
+  },
+  {
+    "name": "আল মুদ্বিল্ল",
+    "meaning": "(অবিশ্বাসীদের) বেইজ্জতকারী"
+  },
+  {
+    "name": "আস সামি",
+    "meaning": "সর্বশ্রোতা"
+  },
+  {
+    "name": "আল বাসীর",
+    "meaning": "সর্ববিষয় দর্শনকারী"
+  },
+  {
+    "name": "আল হাকাম",
+    "meaning": "অতল বিচারক"
+  },
+  {
+    "name": "আল আদল",
+    "meaning": "পরিপূর্ণ ন্যায়বিচারক"
+  },
+  {
+    "name": "আল লতিফ",
+    "meaning": "সকল গোপন বিষয়ে অবগত"
+  },
+  {
+    "name": "আল খাবির",
+    "meaning": "সকল বিষয়ে জ্ঞাত"
+  },
+  {
+    "name": "আল হালিম",
+    "meaning": "অত্যন্ত ধর্য্যশীল"
+  },
+  {
+    "name": "আল আজিম",
+    "meaning": "সর্বত্ত মর্যাদাশীল"
+  },
+  {
+    "name": "আল গফুর",
+    "meaning": "পরম ক্ষমাশীল"
+  },
+  {
+    "name": "আস শাকুর",
+    "meaning": "গুন্গ্রাহী"
+  },
+  {
+    "name": "আল আলী",
+    "meaning": "উচ্চ মর্যাদাশীল"
+  },
+  {
+    "name": "আল কাবিইর",
+    "meaning": "সুমহান"
+  },
+  {
+    "name": "আল হাফীজ",
+    "meaning": "সংরক্ষণকারী"
+  },
+  {
+    "name": "আল মুক্বিত",
+    "meaning": "সকলের জীবনোপকরণ দানকারী"
+  },
+  {
+    "name": "আল হাসিব",
+    "meaning": "হিসাব গ্রহণকারী"
+  },
+  {
+    "name": "আল জলীল",
+    "meaning": "পরম মর্যাদার অধিকারী"
+  },
+  {
+    "name": "আল কারীম",
+    "meaning": "সুমহান দাতা"
+  },
+  {
+    "name": "আল রাক্বীব",
+    "meaning": "তত্ত্বাবধায়ক"
+  },
+  {
+    "name": "আল মুজীব",
+    "meaning": "কবুলকারী"
+  },
+  {
+    "name": "আল ওয়াসি",
+    "meaning": "সর্বত্ত বিরাজমান"
+  },
+  {
+    "name": "আল হাকীম",
+    "meaning": "পরম প্রজ্ঞাময়"
+  },
+  {
+    "name": "আল ওয়াদুদ",
+    "meaning": "(বান্দাদের প্রতি) সদয়"
+  },
+  {
+    "name": "আল মাজীদ",
+    "meaning": "সকল মর্যাদার অধিকারী"
+  },
+  {
+    "name": "আল বাইস",
+    "meaning": "পুনরুজ্জীবিতকারী"
+  },
+  {
+    "name": "আশ শাহীদ",
+    "meaning": "সর্বজ্ঞ স্বাক্ষী"
+  },
+  {
+    "name": "আল হাক্ব",
+    "meaning": "পরম সত্য"
+  },
+  {
+    "name": "আল ওয়াকিল",
+    "meaning": "পরম নির্ভরযোগ্য কর্ম-সম্পাদনকারী"
+  },
+  {
+    "name": "আল ক্বাইয়ু",
+    "meaning": "পরম শক্তির অধিকারী"
+  },
+  {
+    "name": "আল মাতীন",
+    "meaning": "সুদৃঢ়"
+  },
+  {
+    "name": "আল ওয়ালীইউ",
+    "meaning": "অভিভাবক ও সাহায্যকারী"
+  },
+  {
+    "name": "আল হামীদ",
+    "meaning": "সকল প্রশংসার অধিকারী"
+  },
+  {
+    "name": "আল মুহসি",
+    "meaning": "সকল সৃষ্টির ব্যাপারে অবগত"
+  },
+  {
+    "name": "আল মুব্দি",
+    "meaning": "প্রথমবার সৃষ্টিকর্তা"
+  },
+  {
+    "name": "আল মুয়াক্ষীর",
+    "meaning": "অবকাশ দানকারী"
+  },
+  {
+    "name": "আল আউয়াল",
+    "meaning": "অনাদি"
+  },
+  {
+    "name": "আল আখির",
+    "meaning": "অনন্ত, সর্বশেষ"
+  },
+  {
+    "name": "আল জাহির",
+    "meaning": "সম্পূর্ণরূপে প্রকাশিত"
+  },
+  {
+    "name": "আল বাত্বিন",
+    "meaning": "দৃষ্টি হতে অদৃশ্য"
+  },
+  {
+    "name": "আল ওয়ালী",
+    "meaning": "সমস্ত কিছুর অভিভাবক"
+  },
+  {
+    "name": "আল মুতা’আলী",
+    "meaning": "সৃষ্টির গুণাবলীর উর্দ্ধে"
+  },
+  {
+    "name": "আল বার্",
+    "meaning": "পরম উপকারী"
+  },
+  {
+    "name": "আত তাওয়াব",
+    "meaning": "তাওবার তৌফিক দানকারী ও কবুলকারী"
+  },
+  {
+    "name": "আল মুনতাক্বীম",
+    "meaning": "প্রতিশোধ গ্রহণকারী"
+  },
+  {
+    "name": "আল আফঊ",
+    "meaning": "পরম উদার"
+  },
+  {
+    "name": "আর রউফ",
+    "meaning": "পরম স্নেহশীল"
+  },
+  {
+    "name": "মালিকুল মূলক",
+    "meaning": "সমগ্র জগতের বাদশাহ"
+  },
+  {
+    "name": "যুল জালালী ওয়াল ইকরাম",
+    "meaning": "মহিমান্বিত ও দয়াবান সত্তা"
+  },
+  {
+    "name": "আল মুক্বসিত",
+    "meaning": "হকদারের হোক আদায়কারী"
+  },
+  {
+    "name": "আল জামিই",
+    "meaning": "একত্রকারী, সমবেতকারী"
+  },
+  {
+    "name": "আল গানি",
+    "meaning": "অমুখাপেক্ষি ধনী"
+  },
+  {
+    "name": "আল মুগনিই",
+    "meaning": "পরম অভাবমোচনকারী"
+  },
+  {
+    "name": "আল মানিই",
+    "meaning": "অকল্যাণরোধক"
+  },
+  {
+    "name": "আয্ যর",
+    "meaning": "ক্ষতিসাধনকারী"
+  },
+  {
+    "name": "আন নাফিই’",
+    "meaning": "কল্যাণকারী"
+  },
+  {
+    "name": "আন নূর",
+    "meaning": "পরম আলো"
+  },
+  {
+    "name": "আল হাদী",
+    "meaning": "পথ প্রদর্শক"
+  },
+  {
+    "name": "আল বাদীই",
+    "meaning": "অতুলনীয়"
+  },
+  {
+    "name": "আল বাক্বী",
+    "meaning": "চিরঞ্জীব"
+  },
+  {
+    "name": "আল ওয়ারিস",
+    "meaning": "উত্তরাধিকারী"
+  },
+  {
+    "name": "আর রাশীদ",
+    "meaning": "সঠিক পথ প্রদর্শক"
+  },
+  {
+    "name": "আস সাবুর",
+    "meaning": "অত্যাধিক ধর্য্য ধারণকারী"
+  }
+];
+
+    const namesContainer = document.getElementById('names-container');
+
+    // Loop through the data and create HTML elements for each name
+    data.forEach((name, index) => {
+      const nameCard = document.createElement('div');
+      nameCard.classList.add('name-card');
+
+      const numberElement = document.createElement('div');
+      numberElement.classList.add('number');
+      numberElement.textContent = `${index + 1}.`;
+
+      const nameElement = document.createElement('div');
+      nameElement.classList.add('name');
+      nameElement.textContent = name.name;
+
+      const meaningElement = document.createElement('div');
+      meaningElement.classList.add('meaning');
+      meaningElement.textContent = `অর্থ: ${name.meaning}`;
+
+      nameCard.appendChild(numberElement);
+      nameCard.appendChild(nameElement);
+      nameCard.appendChild(meaningElement);
+
+      namesContainer.appendChild(nameCard);
+    });
+  </script>
+</body>
+</html>
