@@ -3,112 +3,155 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="title">Quran Surah and Ayah</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  <title>Listen Quran Ayah</title>
   <style>
     body {
-      background-image: linear-gradient(50deg, #2e041c , #904e57);
-    
-      text-align: center;
-    
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+background: linear-gradient(55deg, #b0d3d6, #c77989 );
+      text-align:center;
+    }
+      .col {
+      flex: 1; /* Each column takes equal space */
+    }
+
+
+    .container {
+      
+      width: 90%;
+      margin: 20px auto;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .col-md-6 {
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .form-container {
+      background-color: #79c6c7;
+      border-radius: 10px;
+      padding: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 01.1);
+    }
+
+    .form-label {
+      font-size: 1.1rem;
+      color: #333;
        
     }
 
-    #quranForm {
-      padding: 20px;
+    .form-control {
+      width: 25%;
+      padding: 9px;
+      background: #c5e6da;
+      margin-bottom: 1%;
+      border: 1px solid #ccc;
+      border-radius:  15px;
+      transition: border-color 0.3s;
     }
 
-    #title {
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-      color: #e3cae0;
-      text-shadow: 0px 0px 2px green;
+    .form-control:focus {
+      outline: none;
+      border-color: #007bff;
     }
 
-    #quranForm input[type="number"] {
-      width: 15%;
-      border-radius: 20px;
-      padding:2px;
-      padding-left:10px;
-    }
-
-    #quranForm input[type="submit"] {
-      transition: transform 0.2s;
-      background: #6c757d;
-      border-radius: 20px;
+    .btn-primary {
+      background-color: #e386c4;
+      color: #fff;
+     margin-top:20px;
+      padding: 10px 20px;
       border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
     }
 
-    #quranForm input[type="submit"]:hover {
-      transform: scale(1.1);
-      background: #343a40;
+    .btn-primary:hover {
+      background-color: #812882;
     }
-     footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background-color: #849bb8;
-      padding: 10px 0;
+
+    .audio-player {
+      display: none;
+      margin-top: 20px;
+   
+    }
+
+     
+    .mb-3{
+      padding:10px; 
+      border-radius: 15px; 
+     /*border:2px solid #c5e6ca;*/
+      box-shadow: 0 0 10px rgba(0, 0, 0.3,0.31);
+
+    }
+     
+    .col {
+      flex: 1; /* Each column takes equal space */
+    }
+
+    .btn {
+      width:40%;
+    }
+      .btn-pas {
+      background-color:#a876a5;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+      .btnc {
+        width: 80%;
       text-align: center;
-    }
-
-    /* Dark Mode Styles */
-    .dark-mode {
-      background-color: #bfb9a4;
-    }
-    .form-label{
-      font-size:135%;
-      color:#aae8a9;
-
-    }
-    .form-container {
-      background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      padding: 10px;
+      text-decoration: none; /* Remove default underline */
     }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <!---div class="form-switch DarMode">
-    <input class="form-check-input" type="checkbox" id="darkModeSwitch" onclick="toggleDarkMode()">
-    <label class="form-check-label" for="darkModeSwitch"> <b>Dark Mode</b> </label>
-  </div--->
-
-  <div class="container mt-5"><br>
-    <div class="row">
-      <div class="col-md-6 offset-md-3 form-container">
-        
-        <h1 class="text-center" id="title">
-          Listen Quran Ayah
-        </h1>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-container">
+        <h1 class="text-center" id="title">Listen Quran Ayah</h1>
         <form id="quranForm">
           <div class="mb-3">
             <label for="surah" class="form-label">Surah:</label>
-            <input type="number" class="form-control" id="surah" min="1" max="114" required>
-            
+            <input type="number" class="form-control" id="surah" min="1" max="114" placeholder=" Surah number" required>
             <label for="ayah" class="form-label">Ayah:</label>
-            <input type="number" class="form-control" id="ayah" min="1" max="286" required>
+            <input type="number" class="form-control" id="ayah" min="1" max="286" placeholder=" Ayah number" required>
           </div>
-          <br>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">Find </button>
         </form>
-
-        <div id="audioPlayer" class="mt-4 d-none">
+        <div id="audioPlayer" class="audio-player">
           <audio controls id="quranAudio"></audio>
         </div>
-      </div>
-    </div>
-  </div>
+        
+        
+      </div> 
+    </div> 
+  </div> 
 </div>
-<br>
-<h1 style=' font-size: 1.5rem;margin-bottom: 30px;  color:white;'> Need full surah ? <a href='/fullSurah.html'> click </a></h1>
+  
+ <section style='   display: flex;   padding:15px' class="container">
+    <div class="col">
+    <a href="/fullSurah.html" class="btnc btn-pas">Listen Full Surah </a>
+  </div>
+  <div class="col">
+    <a href="https://mhasanm828.github.io/Tools/Prayer-time.html" class="btnc btn-pas">See Prayer Time </a>
+  </div>
+</section>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-4D3euPw0rF1OzkeKT4+BXqMIh0SU2a3pFV2+5A7pW7lC4U/FA5x6ZxZ4vDdjZHp1" crossorigin="anonymous"></script>
+
+ 
 
 <script>
   document.getElementById('quranForm').addEventListener('submit', function(event) {
@@ -121,18 +164,11 @@
     audioPlayer.src = audioUrl;
 
     const audioPlayerContainer = document.getElementById('audioPlayer');
-    audioPlayerContainer.classList.remove('d-none');
+    audioPlayerContainer.style.display = 'block';
   });
 
-  // Function to toggle dark mode
-  function toggleDarkMode() {
-    const body = document.body;
-    body.classList.toggle('dark-mode');
-  }
+  
 </script>
-   <footer>
-    <h5>&copy; Md Hasan Mahmud</h5>
-  </footer>
 
 </body>
 </html>
