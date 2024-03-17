@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Playlist Gallery</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Plyr CSS -->
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css">
+  <!-- Custom CSS -->
+  <style>
+    .video-container {
+      margin-bottom: 20px;
+    }
+
+    /* Style for the video gallery container */
+    #videoGalleryContainer {
+      max-height: 80vh; /* Limit max height to ensure it fits within the viewport */
+      overflow-y: auto; /* Enable vertical scroll */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Video Player Section -->
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center mt-3">Video Player</h1>
+        <video id="videoPlayer" controls playsinline class="w-100">
+          <source src="" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <!-- Video Gallery Section -->
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center mt-3">Video Playlist Gallery</h1>
+        <div id="videoGalleryContainer">
+          <div class="row" id="videoGallery"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and Popper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+  <!-- Plyr JS -->
+  <script src="https://cdn.plyr.io/3.6.8/plyr.polyfilled.js"></script>
+  <!-- Custom JavaScript -->
+  <script>
+    const videoData = [
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_01.mp4",
+        title: "Qur'an Para 1",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/01.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_02.mp4",
+        title: "Qur'an Para 2",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/02.jpg"
+      },
+      // Add more video data here...
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_03.mp4",
+        title: "Qur'an Para 3",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/03.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_04.mp4",
+        title: "Qur'an Para 4",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/04.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_05.mp4",
+        title: "Qur'an Para 5",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/05.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_06.mp4",
+        title: "Qur'an Para 6",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/06.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_07.mp4",
+        title: "Qur'an Para 7",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/07.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_08.mp4",
+        title: "Qur'an Para 8",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/08.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_09.mp4",
+        title: "Qur'an Para 9",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/09.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_10.mp4",
+        title: "Qur'an Para 10",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/10.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_11.mp4",
+        title: "Qur'an Para 11",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/11.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_12.mp4",
+        title: "Qur'an Para 12",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/12.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_13.mp4",
+        title: "Qur'an Para 13",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/13.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_14.mp4",
+        title: "Qur'an Para 14",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/14.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_15.mp4",
+        title: "Qur'an Para 15",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/15.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_16.mp4",
+        title: "Qur'an Para 16",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/16.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_17.mp4",
+        title: "Qur'an Para 17",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/17.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_18.mp4",
+        title: "Qur'an Para 18",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/18.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_19.mp4",
+        title: "Qur'an Para 19",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/19.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_20.mp4",
+        title: "Qur'an Para 20",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/20.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_21.mp4",
+        title: "Qur'an Para 21",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/21.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_22.mp4",
+        title: "Qur'an Para 22",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/22.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_23.mp4",
+        title: "Qur'an Para 23",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/23.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_24.mp4",
+        title: "Qur'an Para 24",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/24.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_25.mp4",
+        title: "Qur'an Para 25",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/25.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_26.mp4",
+        title: "Qur'an Para 26",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/26.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_27.mp4",
+        title: "Qur'an Para 27",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/27.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_28.mp4",
+        title: "Qur'an Para 28",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/28.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_29.mp4",
+        title: "Qur'an Para 29",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/29.jpg"
+      },
+      {
+        url: "http://27.131.15.12:801/contents/video/video/KhatamEQuran_Para_30.mp4",
+        title: "Qur'an Para 30",
+        thumbnail: "https://mhasanm828.github.io/Qur-an-ayah/images/30.jpg"
+      },
+    ];
+
+    const videoPlayer = new Plyr('#videoPlayer');
+    const currentVideoTitle = document.getElementById('currentVideo');
+
+    function playVideo(index) {
+      const { url, title } = videoData[index];
+      videoPlayer.source = {
+        type: 'video',
+        sources: [{
+          src: url,
+          type: 'video/mp4',
+        }],
+      };
+      videoPlayer.play();
+      currentVideoTitle.innerText = title;
+    }
+
+    function createVideoGallery() {
+      const galleryDiv = document.getElementById('videoGallery');
+      videoData.forEach(({ title, thumbnail }, index) => {
+        const videoContainer = document.createElement('div');
+        videoContainer.classList.add('col-md-4', 'video-container');
+        videoContainer.innerHTML = `
+          <button class="btn btn-primary btn-block" onclick="playVideo(${index})">
+            <img src="${thumbnail}" alt="${title}" class="img-thumbnail">
+            ${title}
+          </button>
+        `;
+        galleryDiv.appendChild(videoContainer);
+      });
+    }
+
+    window.onload = () => {
+      createVideoGallery();
+      playVideo(0);
+    };
+  </script>
+</body>
+</html>
