@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Listen Quran Ayah</title>
-  <style>
-    body {
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+  <!---style>
+        body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
@@ -25,9 +28,10 @@
       max-width: 600px;
     }
     .form-container {
-      background-color: #79c6c7;
+      background-color: ;
       border-radius: 10px;
-      padding: 5px;
+      padding: 35px;
+      border: double;
       box-shadow: 0 0 10px rgba(0, 0, 0, 01.1);
     }
     .form-label {
@@ -35,9 +39,10 @@
       color: #333;
     }
     .form-control {
-      width: 25%;
+      text-align:center;
+      width: 50%;
       padding: 9px;
-      background: #c5e6da;
+      background: #ccc6da;
       margin-bottom: 1%;
       border: 1px solid #ccc;
       border-radius:  15px;
@@ -48,7 +53,7 @@
       border-color: #007bff;
     }
     .btn-primary {
-      background-color: #e386c4;
+      background-color: #;
       color: #fff;
       margin-top:20px;
       padding: 10px 20px;
@@ -70,14 +75,14 @@
       box-shadow: 0 0 10px rgba(0, 0, 0.3,0.31);
     }
     .col {
-      flex: 1; /* Each column takes equal space */
+      flex: 1; 
+      /* Each column takes equal space */
     }
     .btn {
       width:40%;
    padding:10px; 
     }
     .btn-pas {
-      background-color:#a876a5;
       color: #fff;
       border: none;
       border-radius: 5px;
@@ -117,9 +122,34 @@
      padding: 3%;
       margin-bottom: 15px; 
     } 
-  </style>
+  
+</style--->
 </head>
 <body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Listen Quran Ayah</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/fullSurah.html">Listen Full Surah</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/99-Names-Allah.html">99 Names of Allah</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/KhatamEQuran.html">Khatam-e-Quran</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://mhasanm828.github.io/Tools/Prayer-time.html">See Prayer Time</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
 <div class="container mt-5"> <!-- Added mt-5 class for spacing -->
   <div class="row">
@@ -128,10 +158,10 @@
         <h1 class="text-center" id="title">Listen Quran Ayah</h1>
         <form id="quranForm">
           <div class="mb-3">
-            <label for="surah" class="form-label">Surah:</label>
+            <center> <label for="surah" class="form-label">Surah:</label>
             <input type="number" class="form-control" id="surah" min="1" max="114" placeholder=" Surah number" required>
             <label for="ayah" class="form-label">Ayah:</label>
-            <input type="number" class="form-control" id="ayah" min="1" max="286" placeholder=" Ayah number" required>
+            <input type="number" class="form-control" id="ayah" min="1" max="286" placeholder=" Ayah number" required> </center>
           </div>
           <button type="submit" class="btn btn-primary">Find </button>
         </form>
@@ -143,39 +173,25 @@
   </div> 
 </div>
   
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-4 text-center asas ">
-      <a href="/fullSurah.html" class="btn btn-primary">Listen Full Surah</a>
-    </div>
-    <div class="col-md-4 text-center asas">
-      <a href="/99-Names-Allah.html" class="btn btn-primary">99 Names of Allah</a>
-    </div>
-    <div class="col-md-4 text-center asas">
-      <a href="/KhatamEQuran.html" class="btn btn-primary">Khatam-e-Quran</a>
-    </div>
-    <div class="col-md-4 text-center asas ">
-      <a href="https://mhasanm828.github.io/Tools/Prayer-time.html" class="btn btn-primary">See Prayer Time</a>
-    </div>
-  </div>
-</div>
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
- 
+  <script>
+    document.getElementById('quranForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const surah = document.getElementById('surah').value.padStart(3, '0');
+      const ayah = document.getElementById('ayah').value.padStart(3, '0');
+      const audioUrl = `https://www.hadithbd.com/audio/${surah}${ayah}.mp3`;
 
-<script>
-  document.getElementById('quranForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const surah = document.getElementById('surah').value.padStart(3, '0');
-    const ayah = document.getElementById('ayah').value.padStart(3, '0');
-    const audioUrl = `https://www.hadithbd.com/audio/${surah}${ayah}.mp3`;
+      const audioPlayer = document.getElementById('quranAudio');
+      audioPlayer.src = audioUrl;
 
-    const audioPlayer = document.getElementById('quranAudio');
-    audioPlayer.src = audioUrl;
-
-    const audioPlayerContainer = document.getElementById('audioPlayer');
-    audioPlayerContainer.style.display = 'block';
-  });
-</script>
+      const audioPlayerContainer = document.getElementById('audioPlayer');
+      audioPlayerContainer.style.display = 'block';
+    });
+  </script>
 
 </body>
 </html>
