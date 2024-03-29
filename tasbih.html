@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasbih Counter</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    .container {
+      text-align: center;
+      margin: 8px;
+    }
+    .counter {
+      font-size: 24px;
+      margin: px;
+    }
+    .red{
+      background:red;
+      color: yellow ;
+      padding: 80px;
+      border-radius: 40%;
+      backgrund: purple;
+      color: whitesmoke;
+      margin: 5px;
+    }
+    .size{
+      padding: 80px;
+      border-radius: 40%;
+      background: purple;
+      color: whitesmoke;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  
+<div class="container">
+  <h1>Tasbih </h1>
+  
+  <br>
+  
+  <div id="totalCount" class="counter">Total Count: <span id="totalCountDisplay">0</span></div>
+  <button class="btn btn-warning" onclick="resetAllCounts()">সমস্ত গণনা রিসেট</button>
+  <br>
+<br>
+  <div id="subhanallahCounter" class="counter">সুবহানাল্লাহ: <span id="subhanallahCount">0</span></div>
+  <button class="btn btn-success mr-2 red siz" onclick="incrementCount('subhanallah')">সুবহানাল্লাহ</button>
+  <br>
+  <button class="btn btn-primary" onclick="resetCount('subhanallah')">রিসেট</button>
+  <br>
+  <div id="alhamdulillahCounter" class="counter">আলহামদুলিল্লাহ: <span id="alhamdulillahCount">0</span></div>
+  <button class="btn btn-primary mr-2 size" onclick="incrementCount('alhamdulillah')">আলহামদুলিল্লাহ</button><br>
+  <button class="btn btn-primary" onclick="resetCount('alhamdulillah')">রিসেট</button>
+  <br>
+  <div id="laailaahaillallahCounter" class="counter">লা ইলাহা ইল্লাল্লাহু: <span id="laailaahaillallahCount">0</span></div>
+  <button class="btn btn-primary size mr-2" onclick="incrementCount('laailaahaillallah')">লা ইলাহা ইল্লাল্লাহু</button><br>
+  <button class="btn btn-primary" onclick="resetCount('laailaahaillallah')">রিসেট</button>
+  <br>
+  <div id="allahuakbarCounter" class="counter">আল্লাহু আকবার: <span id="allahuakbarCount">0</span></div>
+  <button class="btn btn-danger size mr-2" onclick="incrementCount('allahuakbar')">আল্লাহু আকবার</button><br>
+  <button class="btn btn-primary" onclick="resetCount('allahuakbar')">রিসেট</button>
+  <br>
+  <div id="allahCounter" class="counter">আল্লাহ: <span id="allahCount">0</span></div>
+  <button class="btn btn-info size mr-2" onclick="incrementCount('allah')"> Any Duwa </button><br>
+  <button class="btn btn-primary" onclick="resetCount('allah')">রিসেট</button>
+  <br>
+  
+</div>
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  // Initialize counters
+  let subhanallahCount = parseInt(localStorage.getItem('subhanallahCount')) || 0;
+  let alhamdulillahCount = parseInt(localStorage.getItem('alhamdulillahCount')) || 0;
+  let laailaahaillallahCount = parseInt(localStorage.getItem('laailaahaillallahCount')) || 0;
+  let allahuakbarCount = parseInt(localStorage.getItem('allahuakbarCount')) || 0;
+  let allahCount = parseInt(localStorage.getItem('allahCount')) || 0;
+
+  // Display initial counts
+  document.getElementById('subhanallahCount').innerText = subhanallahCount;
+  document.getElementById('alhamdulillahCount').innerText = alhamdulillahCount;
+  document.getElementById('laailaahaillallahCount').innerText = laailaahaillallahCount;
+  document.getElementById('allahuakbarCount').innerText = allahuakbarCount;
+  document.getElementById('allahCount').innerText = allahCount;
+
+  // Function to increment count for specific counter
+
+function incrementCount(counter) {
+    if (counter === 'subhanallah') {
+      subhanallahCount++;
+      document.getElementById('subhanallahCount').innerText = subhanallahCount;
+    } else if (counter === 'alhamdulillah') {
+      alhamdulillahCount++;
+      document.getElementById('alhamdulillahCount').innerText = alhamdulillahCount;
+    } else if (counter === 'laailaahaillallah') {
+      laailaahaillallahCount++;
+      document.getElementById('laailaahaillallahCount').innerText = laailaahaillallahCount;
+    } else if (counter === 'allahuakbar') {
+      allahuakbarCount++;
+      document.getElementById('allahuakbarCount').innerText = allahuakbarCount;
+    } else if (counter === 'allah') {
+      allahCount++;
+      document.getElementById('allahCount').innerText = allahCount;
+    }
+
+    // Update total count
+    updateTotalCount();
+
+    // Save counts to local storage
+    saveCountsToLocalStorage();
+  }
+
+  // Function to reset count for specific counter
+  function resetCount(counter) {
+    if (counter === 'subhanallah') {subhanallahCount = 0;
+      document.getElementById('subhanallahCount').innerText = subhanallahCount;
+    } else if (counter === 'alhamdulillah') {
+      alhamdulillahCount = 0;
+      document.getElementById('alhamdulillahCount').innerText = alhamdulillahCount;
+    } else if (counter === 'laailaahaillallah') {
+      laailaahaillallahCount = 0;
+      document.getElementById('laailaahaillallahCount').innerText = laailaahaillallahCount;
+    } else if (counter === 'allahuakbar') {
+      allahuakbarCount = 0;
+      document.getElementById('allahuakbarCount').innerText = allahuakbarCount;
+    } else if (counter === 'allah') {
+      allahCount = 0;
+      document.getElementById('allahCount').innerText = allahCount;
+    }
+
+    // Update total count
+    updateTotalCount();
+
+    // Save counts to local storage
+    saveCountsToLocalStorage();
+  }
+
+  // Function to reset all counts
+  function resetAllCounts() {
+    subhanallahCount = 0;
+    alhamdulillahCount = 0;
+    laailaahaillallahCount = 0;
+    allahuakbarCount = 0;
+    allahCount = 0;
+
+    // Update displayed counts
+    document.getElementById('subhanallahCount').innerText = subhanallahCount;
+    document.getElementById('alhamdulillahCount').innerText = alhamdulillahCount;
+    document.getElementById('laailaahaillallahCount').innerText = laailaahaillallahCount;
+    document.getElementById('allahuakbarCount').innerText = allahuakbarCount;
+    document.getElementById('allahCount').innerText = allahCount;
+
+    // Update total count
+    updateTotalCount();
+
+    // Clear local storage
+    localStorage.clear();
+  }
+
+  // Function to update total count
+  function updateTotalCount() {
+    let totalCount = subhanallahCount + alhamdulillahCount + laailaahaillallahCount + allahuakbarCount + allahCount;
+    document.getElementById('totalCountDisplay').innerText = totalCount;
+  }
+
+  // Function to save counts to local storage
+  function saveCountsToLocalStorage() {
+    localStorage.setItem('subhanallahCount', subhanallahCount);
+    localStorage.setItem('alhamdulillahCount', alhamdulillahCount);
+    localStorage.setItem('laailaahaillallahCount', laailaahaillallahCount);
+    localStorage.setItem('allahuakbarCount', allahuakbarCount);
+    localStorage.setItem('allahCount', allahCount);
+  }
+</script>
+
+</body>
+</html>
