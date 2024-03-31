@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Playlist</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .playlist-item {
+      background-color: #fff;
+      border: 1px solid #dee2e6;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .playlist-item:hover {
+      background-color: #e9ecef;
+    }
+    #videoContainer {
+      text-align: center;
+    }
+    video {
+      width: 100%;
+      max-width: 900px;
+      border-radius: 10px;
+      
+    }
+    .video-controls {
+      display: flex;
+      justify-content: center;
+      margin-top: 0px;
+    }
+    .video-controls button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      margin: 0 5px;
+    }
+    .video-info {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h3 style="padding-top: 0px; margin-top: 0px;" class="mb-6 text-center"> Digital Quran shikkha </h3>
+    <div class="row">
+      <div class="col-12">
+        <div id="videoContainer" class="stiky-top">
+          <div class="video-info">Now playing: </div>
+          <video id="videoPlayer" controls autoplay>
+            <source src="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_01.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          volume
+          <div class="video-controls">
+             <input type="range" id="volumeRange" min="0" max="1" step="0.1" value="1">
+            <button id="fullscreenBtn"><i class="bi bi-arrows-fullscreen"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="list-group" style="max-height: 400px; overflow-y: auto;">
+       <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_01.mp4" class="list-group-item list-group-item-action playlist-item">Class 1</a>
+               <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_02.mp4" class="list-group-item list-group-item-action playlist-item">Class 2</a>
+               <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_03.mp4" class="list-group-item list-group-item-action playlist-item">Class 3</a>
+               <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_04.mp4" class="list-group-item list-group-item-action playlist-item">Class 4</a>
+               <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_05.mp4" class="list-group-item list-group-item-action playlist-item">Class 5</a>
+               <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_06.mp4" class="list-group-item list-group-item-action playlist-item">Class 6</a>
+               <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_07.mp4" class="list-group-item list-group-item-action playlist-item">Class 7</a>
+               <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_08.mp4" class="list-group-item list-group-item-action playlist-item">Class 8</a>
+               <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_09.mp4" class="list-group-item list-group-item-action playlist-item">Class 9</a>
+               <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_10.mp4" class="list-group-item list-group-item-action playlist-item">Class 10</a>
+               <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_11.mp4" class="list-group-item list-group-item-action playlist-item">Class 11</a>
+               <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_12.mp4" class="list-group-item list-group-item-action playlist-item">Class 12</a>
+               <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_13.mp4" class="list-group-item list-group-item-action playlist-item">Class 13</a>
+               <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_14.mp4" class="list-group-item list-group-item-action playlist-item">Class 14</a>
+               <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_15.mp4" class="list-group-item list-group-item-action playlist-item">Class 15</a>
+               <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_16.mp4" class="list-group-item list-group-item-action playlist-item">Class 16</a>
+              <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_17.mp4" class="list-group-item list-group-item-action playlist-item">Class 17</a>
+          <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_18.mp4" class="list-group-item list-group-item-action playlist-item">Class 18</a>
+          <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_19.mp4" class="list-group-item list-group-item-action playlist-item">Class 19</a>
+          <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_20.mp4" class="list-group-item list-group-item-action playlist-item">Class 20</a>
+          <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_21.mp4" class="list-group-item list-group-item-action playlist-item">Class 21</a>
+          <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_22.mp4" class="list-group-item list-group-item-action playlist-item">Class 22</a>
+          <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_23.mp4" class="list-group-item list-group-item-action playlist-item">Class 23</a>
+          <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_24.mp4" class="list-group-item list-group-item-action playlist-item">Class 24</a>
+          <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_25.mp4" class="list-group-item list-group-item-action playlist-item">Class 25</a>
+          <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_26.mp4" class="list-group-item list-group-item-action playlist-item">Class 26</a>
+          <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_27.mp4" class="list-group-item list-group-item-action playlist-item">Class 27</a>
+          <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_28.mp4" class="list-group-item list-group-item-action playlist-item">Class 28</a>
+          <!---a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_13.mp4" class="list-group-item list-group-item-action playlist-item">Class 13</a>
+          <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_14.mp4" class="list-group-item list-group-item-action playlist-item">Class 14</a>
+          <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_15.mp4" class="list-group-item list-group-item-action playlist-item">Class 15</a>
+          <a href="http://27.131.15.12:801/contents/video/video/DigitalQuranSchool_ClassNo_16.mp4" class="list-group-item list-group-item-action playlist-item">Class 16</a><!-- You can continue adding more links with the same format to reach the total of 28 classes -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br><br><br>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const videoPlayer = document.getElementById('videoPlayer');
+      const volumeRange = document.getElementById('volumeRange');
+      const fullscreenBtn = document.getElementById('fullscreenBtn');
+      const videoInfo = document.querySelector('.video-info');
+
+      videoPlayer.addEventListener('play', function() {
+        videoInfo.textContent = 'Now playing: ' + videoPlayer.src.split('_').pop();
+      });
+
+      volumeRange.addEventListener('input', function() {
+        videoPlayer.volume = volumeRange.value;
+      });
+
+      fullscreenBtn.addEventListener('click', function() {
+        if (videoPlayer.requestFullscreen) {
+          videoPlayer.requestFullscreen();
+        } else if (videoPlayer.mozRequestFullScreen) { /* Firefox */
+          videoPlayer.mozRequestFullScreen();
+        } else if (videoPlayer.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+          videoPlayer.webkitRequestFullscreen();
+        } else if (videoPlayer.msRequestFullscreen) { /* IE/Edge */
+          videoPlayer.msRequestFullscreen();
+        }
+      });
+
+      const videoLinks = document.querySelectorAll('.playlist-item');
+
+      videoLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const videoSrc = this.getAttribute('href');
+          videoPlayer.src = videoSrc;
+          videoPlayer.play();
+        });
+      });
+    });
+  </script>
+</body>
+</html>
